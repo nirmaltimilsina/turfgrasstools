@@ -1,6 +1,6 @@
 # Turfgrass Decision Support Tools
 
-Public website: https://nirmaltimilsina.github.io/turfgrass-pgr-gdd/
+Public website: https://nirmaltimilsina.github.io/turfgrasstools/
 
 Interactive calculator: https://turf-pgr-gdd.streamlit.app/
 
