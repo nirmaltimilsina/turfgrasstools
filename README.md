@@ -15,19 +15,18 @@ Each Python application lives in its own **private** GitHub repository. Do not u
 
 ## Turn on a tool link
 
-After an app is deployed, has been tested, and is set to public in Streamlit Community Cloud, open `config.js` and enter its live HTTPS URL. Example:
+The homepage links to four currently deployed calculators. To change an app's address, edit `config.js`. Example:
 
 ```js
 window.TURFGRASS_TOOL_URLS = {
   pgr: "https://turf-pgr-gdd.streamlit.app/",
-  gp: "https://your-growth-potential-app.streamlit.app/",
-  nitrogen: "",
-  monitor: "",
-  irrigation: ""
+  gp: "https://turf-growth-potential.streamlit.app/",
+  nitrogen: "https://turf-nitrogen-planner.streamlit.app/",
+  irrigation: "https://turf-irrigation.streamlit.app/"
 };
 ```
 
-The homepage automatically changes that card from **In development** to **Available** and adds an **Open** link. Keep the URL empty until the app is live. The current PGR link is already configured.
+The homepage automatically hides any link with an empty URL. Growth Monitoring, Stress Assessment, and Disease Risk remain listed as under development, without public launch links.
 
 ## GitHub Pages settings
 

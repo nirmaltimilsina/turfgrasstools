@@ -37,7 +37,7 @@
     nav a { color: #eaf3ed; text-decoration: none; font-size: 13px; font-weight: 600; }
     nav a:hover { color: white; text-decoration: underline; }
 
-    .intro { padding: 45px 0 36px; background: white; border-bottom: 1px solid var(--line); }
+    .intro { padding: 47px 0 39px; background: white; border-bottom: 1px solid var(--line); }
     .eyebrow { margin: 0 0 11px; color: #287650; font-size: 12px; font-weight: 750; letter-spacing: .10em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { font-size: clamp(35px, 5vw, 52px); line-height: 1.15; letter-spacing: -.045em; margin-bottom: 14px; }
@@ -48,7 +48,7 @@
     h2 { font-size: 24px; line-height: 1.25; letter-spacing: -.025em; margin: 0; }
     .section-heading p { color: var(--muted); font-size: 13px; margin: 0; }
     .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .tool-card { display: flex; flex-direction: column; min-height: 222px; padding: 24px 27px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 11px; box-shadow: 0 2px 8px #0f382608; }
+    .tool-card { display: flex; flex-direction: column; min-height: 192px; padding: 24px 27px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 11px; box-shadow: 0 2px 8px #0f382608; }
     .tool-card:has(.tool-link:not([hidden])) { border-top: 3px solid #2b7855; padding-top: 22px; }
     .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 15px; }
     .number { font-weight: 800; color: #2b7855; font-size: 13px; letter-spacing: .06em; }
@@ -108,7 +108,7 @@
       <div class="wrap">
         <p class="eyebrow">Turfgrass management and research</p>
         <h1 id="site-title">Turfgrass Tools</h1>
-        <p>Calculators and field-data tools for turfgrass managers, researchers, and students.</p>
+        <p>Simple, research-informed calculators for turfgrass managers, researchers, and students.</p>
       </div>
     </section>
 
@@ -119,35 +119,28 @@
           <article class="tool-card">
             <div class="card-top"><span class="number">01</span><span class="status" id="pgr-status">Available</span></div>
             <h3>PGR Growing Degree Day Calculator</h3>
-            <p>Track heat accumulation after a PGR application and compare it with published reapplication intervals.</p>
+            <p>Calculate GDD since a PGR application and track a published reapplication interval.</p>
             <a id="pgr-link" class="tool-link" href="https://turf-pgr-gdd.streamlit.app/" target="_blank" rel="noopener noreferrer">Open PGR calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </article>
 
           <article class="tool-card">
             <div class="card-top"><span class="number">02</span><span class="status planned" id="gp-status">In development</span></div>
             <h3>Growth Potential Calculator</h3>
-            <p>Estimate temperature-based growth potential for cool- and warm-season turfgrass.</p>
+            <p>See how air temperature affects the growth potential of cool- or warm-season turfgrass.</p>
             <a id="gp-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open growth potential calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </article>
 
           <article class="tool-card">
             <div class="card-top"><span class="number">03</span><span class="status planned" id="nitrogen-status">In development</span></div>
-            <h3>Nitrogen Management Tools</h3>
-            <p>Calculate fertilizer amounts, plan nitrogen applications, and review clipping-N removal.</p>
+            <h3>Nitrogen Calculator</h3>
+            <p>Calculate fertilizer amounts, clipping nitrogen removal, and review application totals.</p>
             <a id="nitrogen-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open nitrogen planner <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </article>
 
           <article class="tool-card">
-            <div class="card-top"><span class="number">04</span><span class="status planned" id="monitor-status">In development</span></div>
-            <h3>Turfgrass Growth Monitoring</h3>
-            <p>Record clipping yield, canopy indices, and field measurements to compare changes over time.</p>
-            <a id="monitor-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open growth monitor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-          </article>
-
-          <article class="tool-card">
-            <div class="card-top"><span class="number">05</span><span class="status planned" id="irrigation-status">In development</span></div>
-            <h3>Irrigation &amp; Water Budget</h3>
-            <p>Compare estimated evapotranspiration, rainfall, and irrigation. Calculate sprinkler runtime and soil-water depth.</p>
+            <div class="card-top"><span class="number">04</span><span class="status planned" id="irrigation-status">In development</span></div>
+            <h3>Irrigation Calculator</h3>
+            <p>Calculate sprinkler runtime, irrigation water volume, and equivalent soil-water depth.</p>
             <a id="irrigation-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open irrigation tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </article>
         </div>
@@ -157,10 +150,11 @@
       <div class="wrap">
         <div class="section-heading"><h2 id="upcoming-title">Under development</h2><p>Planned tools, not yet available</p></div>
         <div class="upcoming-grid">
+          <article class="upcoming-card"><h3>Turfgrass Growth Monitoring</h3><p>Record clipping measurements and field observations across dates. Data-storage workflow in development.</p></article>
           <article class="upcoming-card"><h3>Turfgrass Stress Assessment</h3><p>Review weather, canopy sensing, and field observations for possible stress signals. Not a diagnostic tool yet.</p></article>
           <article class="upcoming-card"><h3>Disease &amp; Weather Risk</h3><p>Explore weather-based disease risk estimates where a validated model is available.</p></article>
         </div>
-        <p class="upcoming-note">New tools will appear here once their methods and results have been tested.</p>
+        <p class="upcoming-note">These tools are not yet available for management use.</p>
       </div>
     </section>
   </main>
@@ -175,7 +169,7 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     const urls = window.TURFGRASS_TOOL_URLS || {};
-    for (const key of ["pgr", "gp", "nitrogen", "monitor", "irrigation"]) {
+    for (const key of ["pgr", "gp", "nitrogen", "irrigation"]) {
       const url = String(urls[key] || "").trim();
       const link = document.getElementById(`${key}-link`);
       const status = document.getElementById(`${key}-status`);
