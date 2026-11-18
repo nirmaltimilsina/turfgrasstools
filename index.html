@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turfgrass Tools: independent calculators and field-data tools for turfgrass management and applied research.">
+  <meta name="theme-color" content="#183d32">
+  <title>Turfgrass Tools | Nirmal Timilsina</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17352a;
+      --muted: #57675f;
+      --green: #136949;
+      --green-dark: #0c4a34;
+      --line: #dbe5de;
+      --surface: #fff;
+      --page: #f8faf8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--green); }
+    a:focus-visible { outline: 3px solid #8cc9a8; outline-offset: 4px; }
+    .wrap { width: min(1060px, calc(100% - 42px)); margin: 0 auto; }
+    .skip { position: absolute; left: -10000px; top: 10px; z-index: 10; padding: 8px 14px; background: white; }
+    .skip:focus { left: 10px; }
+
+    header { background: #183d32; color: white; }
+    .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: white; text-decoration: none; font-size: 18px; font-weight: 750; letter-spacing: -.025em; }
+    .brand:hover { color: white; }
+    .brand-icon { width: 34px; height: 34px; border-radius: 8px; background: #d8edb5; color: #183d32; display: grid; place-items: center; }
+    .brand-icon svg { width: 22px; height: 22px; }
+    nav { display: flex; gap: 27px; }
+    nav a { color: #eaf3ed; text-decoration: none; font-size: 13px; font-weight: 600; }
+    nav a:hover { color: white; text-decoration: underline; }
+
+    .intro { padding: 45px 0 36px; background: white; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 11px; color: #287650; font-size: 12px; font-weight: 750; letter-spacing: .10em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(35px, 5vw, 52px); line-height: 1.15; letter-spacing: -.045em; margin-bottom: 14px; }
+    .intro p:last-child { max-width: 580px; color: var(--muted); font-size: 17px; margin-bottom: 0; }
+
+    .tools { padding: 34px 0 28px; scroll-margin-top: 20px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    h2 { font-size: 24px; line-height: 1.25; letter-spacing: -.025em; margin: 0; }
+    .section-heading p { color: var(--muted); font-size: 13px; margin: 0; }
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .tool-card { display: flex; flex-direction: column; min-height: 222px; padding: 24px 27px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 11px; box-shadow: 0 2px 8px #0f382608; }
+    .tool-card:has(.tool-link:not([hidden])) { border-top: 3px solid #2b7855; padding-top: 22px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 15px; }
+    .number { font-weight: 800; color: #2b7855; font-size: 13px; letter-spacing: .06em; }
+    .status { font-size: 11px; font-weight: 750; padding: 4px 10px; border-radius: 999px; border: 1px solid #bfdbca; color: #165d3e; background: #eff9f1; }
+    .status.planned { background: #f4f6f4; border-color: #dce3de; color: #64716b; }
+    h3 { font-size: 21px; line-height: 1.35; letter-spacing: -.027em; margin: 0 0 10px; }
+    .tool-card p { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0 0 21px; max-width: 390px; }
+    .tool-link { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: auto; text-decoration: none; color: var(--green); font-size: 14px; font-weight: 750; }
+    .tool-link:hover { color: var(--green-dark); text-decoration: underline; }
+    .tool-link svg { width: 17px; height: 17px; transition: transform .15s ease; }
+    .tool-link:hover svg { transform: translate(2px, -2px); }
+    .tool-link[hidden] { display: none; }
+    .upcoming { padding: 14px 0 52px; }
+    .upcoming-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .upcoming-card { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 21px 23px 20px; }
+    .upcoming-card h3 { font-size: 17px; margin-bottom: 7px; }
+    .upcoming-card p { color: var(--muted); font-size: 13px; margin-bottom: 0; }
+    .upcoming-note { color: var(--muted); font-size: 13px; padding: 17px 0 0; margin: 0; }
+
+    footer { padding: 27px 0 32px; border-top: 1px solid var(--line); background: #fff; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+    footer p { font-size: 13px; color: var(--muted); margin: 0; }
+    footer strong { color: var(--ink); }
+    @media (max-width: 700px) {
+      .intro { padding: 48px 0 37px; }
+      .tools { padding: 39px 0 54px; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .tool-card { min-height: 215px; }
+      .upcoming-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 440px) {
+      .header-inner { min-height: 65px; }
+      .brand { font-size: 16px; }
+      nav { gap: 16px; }
+      .tool-card { padding: 23px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .tool-link svg { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#content" class="skip">Skip to content</a>
+  <header id="top">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="Turfgrass Tools home">
+        <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9m0 6C5 18 3 13 3 8c6 0 9 3 9 10m0-7c1-6 5-8 10-8-1 7-4 10-10 10"/></svg></span>
+        Turfgrass Tools
+      </a>
+      <nav aria-label="Main navigation"><a href="#tools">Tools</a><a href="#about">About</a></nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="intro" aria-labelledby="site-title">
+      <div class="wrap">
+        <p class="eyebrow">Turfgrass management and research</p>
+        <h1 id="site-title">Turfgrass Tools</h1>
+        <p>Calculators and field-data tools for turfgrass managers, researchers, and students.</p>
+      </div>
+    </section>
+
+    <section class="tools" id="tools" aria-labelledby="tools-title">
+      <div class="wrap">
+        <div class="section-heading"><h2 id="tools-title">Tools</h2><p>Select a tool to open it</p></div>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <div class="card-top"><span class="number">01</span><span class="status" id="pgr-status">Available</span></div>
+            <h3>PGR Growing Degree Day Calculator</h3>
+            <p>Track heat accumulation after a PGR application and compare it with published reapplication intervals.</p>
+            <a id="pgr-link" class="tool-link" href="https://turf-pgr-gdd.streamlit.app/" target="_blank" rel="noopener noreferrer">Open PGR calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </article>
+
+          <article class="tool-card">
+            <div class="card-top"><span class="number">02</span><span class="status planned" id="gp-status">In development</span></div>
+            <h3>Growth Potential Calculator</h3>
+            <p>Estimate temperature-based growth potential for cool- and warm-season turfgrass.</p>
+            <a id="gp-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open growth potential calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </article>
+
+          <article class="tool-card">
+            <div class="card-top"><span class="number">03</span><span class="status planned" id="nitrogen-status">In development</span></div>
+            <h3>Nitrogen Management Tools</h3>
+            <p>Calculate fertilizer amounts, plan nitrogen applications, and review clipping-N removal.</p>
+            <a id="nitrogen-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open nitrogen planner <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </article>
+
+          <article class="tool-card">
+            <div class="card-top"><span class="number">04</span><span class="status planned" id="monitor-status">In development</span></div>
+            <h3>Turfgrass Growth Monitoring</h3>
+            <p>Record clipping yield, canopy indices, and field measurements to compare changes over time.</p>
+            <a id="monitor-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open growth monitor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </article>
+
+          <article class="tool-card">
+            <div class="card-top"><span class="number">05</span><span class="status planned" id="irrigation-status">In development</span></div>
+            <h3>Irrigation &amp; Water Budget</h3>
+            <p>Compare estimated evapotranspiration, rainfall, and irrigation. Calculate sprinkler runtime and soil-water depth.</p>
+            <a id="irrigation-link" class="tool-link" hidden target="_blank" rel="noopener noreferrer">Open irrigation tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="upcoming" id="upcoming" aria-labelledby="upcoming-title">
+      <div class="wrap">
+        <div class="section-heading"><h2 id="upcoming-title">Under development</h2><p>Planned tools, not yet available</p></div>
+        <div class="upcoming-grid">
+          <article class="upcoming-card"><h3>Turfgrass Stress Assessment</h3><p>Review weather, canopy sensing, and field observations for possible stress signals. Not a diagnostic tool yet.</p></article>
+          <article class="upcoming-card"><h3>Disease &amp; Weather Risk</h3><p>Explore weather-based disease risk estimates where a validated model is available.</p></article>
+        </div>
+        <p class="upcoming-note">New tools will appear here once their methods and results have been tested.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="about">
+    <div class="wrap footer-inner">
+      <p><strong>Developed by Nirmal Timilsina</strong> · Ph.D. candidate, Crop Science, North Carolina State University</p>
+      <p>© <span id="year">2026</span> Nirmal Timilsina</p>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const urls = window.TURFGRASS_TOOL_URLS || {};
+    for (const key of ["pgr", "gp", "nitrogen", "monitor", "irrigation"]) {
+      const url = String(urls[key] || "").trim();
+      const link = document.getElementById(`${key}-link`);
+      const status = document.getElementById(`${key}-status`);
+      // Only activate a link when a secure, absolute URL has been entered.
+      if (/^https:\/\/[^\s]+$/i.test(url)) {
+        link.href = url;
+        link.hidden = false;
+        status.textContent = "Available";
+        status.classList.remove("planned");
+      } else {
+        link.removeAttribute("href");
+        link.hidden = true;
+        status.textContent = "In development";
+        status.classList.add("planned");
+      }
+    }
+  </script>
+</body>
+</html>
